@@ -8,7 +8,9 @@ https://projecteuler.net/problem=7
 import time
 
 def check_for_prime(n):
-    if n%2 == 0: return False
+    if n == 1: return False
+    elif n == 2: return True
+    elif n%2 == 0: return False
     
     # Elementary prime test borrowed from oeis.org/A000040.
     # + 1 is used because for ints, .7 = 0 in Python.
