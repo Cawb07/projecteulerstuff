@@ -72,9 +72,9 @@ start = time.time()
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 cycle = cycle(days)
 
-date = [ [ [[] for d in range(32)] for m in range(13)] for y in range(2001)]
+date = [ [ [[] for d in range(32)] for m in range(13)] for y in range(2014)]
 
-for y in range(1900, 2001):
+for y in range(1900, 2014):
     if y%4 == 0 and y != 2000 and y != 1900:
         for m in range(1,13):
             for d in range(1, days_in_month[leap[m]]+1):
@@ -93,8 +93,7 @@ for y in range(1900, 2001):
                 today = cycle.next()
                 date[y][m][d] = today
 
-print date[1999][1][1]
-print date[2000][1][1]
+print date[2013][8][22]
 
 the_Wednesdays = 0
 
