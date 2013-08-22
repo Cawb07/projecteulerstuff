@@ -24,6 +24,7 @@ from itertools import cycle
 days_in_month = {
                   "January": 31,
                   "February": 28,
+                  "Leap": 29,
                   "March": 31,
                   "April": 30,
                   "May": 31,
@@ -33,8 +34,7 @@ days_in_month = {
                   "September": 30,
                   "October": 31,
                   "November": 30,
-                  "December": 31,
-                  "Leap": 29
+                  "December": 31
                 }
 
 months_by_num = {
@@ -52,19 +52,58 @@ months_by_num = {
                   12: "December"
                 }
 
+leap =          {
+                  1: "January",
+                  2: "Leap",
+                  3: "March",
+                  4: "April",
+                  5: "May",
+                  6: "June",
+                  7: "July",
+                  8: "August",
+                  9: "September",
+                  10: "October",
+                  11: "November",
+                  12: "December"
+                }
+
 start = time.time()
 
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-
-date = [ [ [[] for d in range(0,32)] for m in range(0,13)] for y in range(0,2001)]
-
-date[1900][1][1] = "Monday"
-print date
-
-
 cycle = cycle(days)
-today = cycle.next()
-print today
+
+date = [ [ [[] for d in range(32)] for m in range(13)] for y in range(2001)]
+
+for y in range(1900, 2001):
+    if y%4 == 0 and y != 2000 and y != 1900:
+        for m in range(1,13):
+            for d in range(1, days_in_month[leap[m]]+1):
+                today = cycle.next()
+                date[y][m][d] = today
+        
+    elif y%400 == 0 and y == 2000:
+        for m in range(1,13):
+            for d in range(1, days_in_month[leap[m]]+1):
+                today = cycle.next()
+                date[y][m][d] = today
+        
+    else:
+        for m in range(1,13):
+            for d in range(1, days_in_month[months_by_num[m]]+1):
+                today = cycle.next()
+                date[y][m][d] = today
+
+print date[1999][1][1]
+print date[2000][1][1]
+
+the_Wednesdays = 0
+
+for y in range(1901, 2000):
+    for m in range(1,13):
+        if date[y][m][1] == "Wednesday":
+            the_Wednesdays += 1
+
+print the_Wednesdays
 
 elapsed = time.time() - start
 print "The elapsed time is %s seconds." % (elapsed)
