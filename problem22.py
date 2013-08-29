@@ -38,7 +38,6 @@ for i, letter in enumerate(string.ascii_uppercase):
 names = np.loadtxt("names.txt", dtype=str, delimiter=",")
 names.sort()
 print names
-print names[939]
 
 total = 0
 for i in range(0, len(names)):
