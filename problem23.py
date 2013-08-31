@@ -24,66 +24,35 @@ two abundant numbers.
 @author: Cawb07
 '''
 import time
+import math as m
 
-def proper_divisors(n):
-    divisors = []
-    i = 1
+def divisors_sum(n):
+    sum = 1
     
-    if (n/2)%1 == 0:
-        while i < (n/2)+1:
-            if n%i == 0:
-                divisors.append(i)
-            i += 1
-    else:
-        while i < (n+1)/2:
-            if n%i == 0:
-                divisors.append(i)
-            i += 1
+    for i in range(2, int(m.sqrt(n))+1):
+        if n%i == 0:
+            sum += i + n/i
+            
+    if m.sqrt(n) == int(m.sqrt(n)):
+        sum -= m.sqrt(n)
     
-    return divisors
-
-
-def sum(d):
-    sigma = 0
-    
-    for e in d:
-        sigma += e
-    
-    return sigma
-
-def is_abundant(n):
-    
-    if sum(proper_divisors(n)) > n:
-        return True
-    else:
-        return False
-    
-    
-def abundants_under(n):
-    abundants = []
-    
-    for i in range(1, n):
-        if is_abundant(i):    
-            abundants.append(i)
-    
-    return abundants
-
-
-def sum_all_pairs(n):
-    sums = []
-    
-    for i in range(0, len(abundants)):
-        for j in range(i, len(abundants)):
-            sums.append( abundants[i]+abundants[j] )
-    
-    return sums
+    return sum
 
 
 
 start = time.time()
 
-abundants = abundants_under(16000)
-print sum_all_pairs(abundants)
+sum = 0
+abundants = set()
+
+for i in range(1, 20162):
+    if divisors_sum(i) > i:
+        abundants.add(i)
+    if not any( (i-a in abundants) for a in abundants):
+        sum += i
+
+print sum
+
 
 elapsed = time.time() - start
 print "The elapsed time is %s seconds." % (elapsed)
