@@ -27,7 +27,7 @@ import time
 import math as m
 
 def divisors_sum(n):
-    sum = 1
+    sigma = 1
     
     for i in range(2, int(m.sqrt(n))+1):
         if n%i == 0:
@@ -36,7 +36,7 @@ def divisors_sum(n):
     if m.sqrt(n) == int(m.sqrt(n)):
         sum -= m.sqrt(n)
     
-    return sum
+    return sigma
 
 
 
