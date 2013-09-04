@@ -43,11 +43,12 @@ nums = []
 denoms = []
 for i in range(10, 100):
     for j in range(10, 100):
-        if type(curious(i, j)) == str:
-            frac = (curious(i,j))
-            nums.append(frac[0]+frac[1])
-            denoms.append(frac[2]+frac[3])
-            print frac
+        if i < j:
+            if type(curious(i, j)) == str:
+                frac = (curious(i,j))
+                nums.append(frac[0]+frac[1])
+                denoms.append(frac[2]+frac[3])
+                print frac
 
 pro = 1
 duct = 1
