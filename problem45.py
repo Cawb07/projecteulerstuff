@@ -20,15 +20,12 @@ start = time()
 
 #n(n+1)/2 n(3n-1)/2 n(2n-1)
 
-switch = False
-n = m = 0
+i = 143
+
 while(True)
-	for(i<j,i++)
-		for(j<k,j++)
-			if (n(n+1)/2) == (n(3n-1)/2)
-				switch = True
-			n = n++
-		if switch && (m(m+1)/2) == m(2m-1)
+	i++
+	answer = i(i+1)/2
+	
 
 
 elapsed = time() - start
