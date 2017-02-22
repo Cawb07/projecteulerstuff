@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"time"
 )
 
 // An irrational decimal fraction is created by concatenating the positive integers:
@@ -59,6 +60,10 @@ func champDigit(d int) int {
 }
 
 func main() {
+	start := time.Now()
 
 	fmt.Println(champDigit(1) * champDigit(10) * champDigit(100) * champDigit(1000) * champDigit(10000) * champDigit(100000) * champDigit(1000000))
+
+	elapsed := time.Since(start)
+	fmt.Printf("The elapsed time is %f", elapsed.Seconds())
 }
